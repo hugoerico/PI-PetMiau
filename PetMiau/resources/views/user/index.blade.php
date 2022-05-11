@@ -26,7 +26,7 @@
                 <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td><img src="{{ asset($user->imagem)}}" style="width:35px"></td>
+                    <td><img src="{{ $user->imagem }}" style="width:35px"></td>
 
                     <td>
                         

@@ -48,9 +48,19 @@ class UsersController extends Controller
 
     public function update(Request $request, User $user)
     {
+        if ($request->imagem) {
+            $imagem = $request->file('imagem')->store('/public/users');
+            $imagem = str_replace('public/', 'storage/', $imagem);
+            \Storage::delete($user->imagem);
+            if (!$user->imagem == 'storage/users/imagempadrao.png')
+                \Storage::delete($user->imagem);
+        } else {
+            $imagem = $user->imagem;
+        }
 
         $user->update([
-            'name' => $request->name
+            'name' => $request->name,
+            'imagem' => $imagem
         ]);
         session()->flash("sucesso", 'usuario atualizado com sucesso');
         return redirect(route('user.index'));

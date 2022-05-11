@@ -9,7 +9,7 @@ class Pet extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome','data_nascimento','imagem','peso','obs','tipo_id','user_id'];
+    protected $fillable = ['nome','data_nascimento','imagem','peso','tipo_id','user_id'];
     
     public function tipo(){
         return $this->belongsTo(Tipo::class);
@@ -18,5 +18,7 @@ class Pet extends Model
     public function vacinas(){
         return $this->belongsToMany(Vacina::class);
     }
+
+    
 
 }

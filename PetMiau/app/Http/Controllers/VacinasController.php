@@ -42,4 +42,14 @@ class VacinasController extends Controller
         return redirect(route('vacina.index'));
 
     }
+    public function destroy(Vacina $vacina,$id)
+    {
+    
+    Vacina::where('id', $id)->delete();
+     session()->flash('sucesso','vacina apagada com sucesso');
+     return redirect(route('vacina.index'));
+     
+    }
+
+
 }

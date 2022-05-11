@@ -27,12 +27,11 @@
                     <td>{{ $vacina->nome }}</td>
 
                     <td>
-                        
-                        <a href="" class="btn btn-sm btn-warning">Editar</a>
-                        <form method="POST" action="" class="d-inline">
+                        <form method="POST" action="{{ Route('vacina.destroy', $id = $vacina->id) }}" class="d-inline">
                             @method('DELETE')
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-danger" onsubmit="return remover()">Apagar</button>
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                onsubmit="return remover()">Apagar</button>
                         </form>
                     </td>
                 </tr>

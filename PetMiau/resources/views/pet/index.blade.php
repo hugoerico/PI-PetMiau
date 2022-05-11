@@ -57,6 +57,9 @@
                                 <button type="submit" class="btn btn-sm btn-danger"
                                     onsubmit="return remover()">Apagar</button>
                             </form>
+                            <a href="{{ Route('observacao.create',$pet_id=$pet->id) }}" class="btn btn-sm btn-warning">Observação</a>
+
+                            <a href="{{ Route('observacao.index',$pet_id=$pet->id) }}" class="btn btn-sm btn-warning">ver observação</a>
                         </td>
                     </tr>
                 @endforeach

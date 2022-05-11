@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Endereco;
+use Illuminate\Support\Facades\Auth;
 
 
 class EnderecosController extends Controller
@@ -21,7 +22,21 @@ class EnderecosController extends Controller
     public function store(Request $request)
     {
 
-        Endereco::create($request->all());
+       
+        Endereco::create([
+            'user_id' => Auth()->user()->id,
+            'rua' => $request->rua,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'uf' => $request->uf,
+            'contato' => $request->contato,
+            'cep' => $request->cep
+
+        ]);
+
+    
         session()->flash("sucesso", 'endereco cadastrado com sucesso');
         return redirect(route('endereco.index'));
 
@@ -36,7 +51,16 @@ class EnderecosController extends Controller
     {
 
         $endereco->update([
-            'endereco' => $request->endereco
+            'user_id' => Auth()->user()->id,
+            'rua' => $request->rua,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'uf' => $request->uf,
+            'contato' => $request->contato,
+            'cep' => $request->cep
+
         ]);
         session()->flash("sucesso", 'endereco atualizado com sucesso');
         return redirect(route('endereco.index'));

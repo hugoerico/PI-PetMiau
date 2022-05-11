@@ -7,6 +7,8 @@ use App\Http\Controllers\NoticiasController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\TiposController;
 use App\Http\Controllers\VacinasController;
+use App\Http\Controllers\ObservacoesController;
+use App\Http\Controllers\UsersPerfilController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,8 +20,8 @@ use App\Http\Controllers\VacinasController;
 |
 */
 
-Route::get('/', function () {
-    return view('/login');
+Route::get('', function () {
+    return view('/home');
 });
 
 Route::get('/dashboard', function () {
@@ -38,7 +40,7 @@ Route::get('/user/edit/{user}',[UsersController::class,'edit'])->name('user.edit
 
 Route::patch('/user/update/{user}',[UsersController::class,'update'])->name('user.update');
 
-Route::delete('/user/{id}', [UsuarioController::class, 'destroy'])->name('user.destroy');
+Route::delete('/user/{id}', [UsersController::class, 'destroy'])->name('user.destroy');
 
 //Endereco
 
@@ -110,5 +112,26 @@ Route::get('/vacina/edit/{vacina}',[VacinasController::class,'edit'])->name('vac
 Route::patch('/vacina/update/{vacina}',[VacinasController::class,'update'])->name('vacina.update');
 
 Route::delete('/vacina/{id}', [VacinasController::class, 'destroy'])->name('vacina.destroy');
-});
 
+//Observação
+
+Route::get('/observacao/create/{id}',[ObservacoesController::class,'create'])->name('observacao.create');
+Route::patch('/observacao/store/{id}',[ObservacoesController::class,'store'])->name('observacao.store');
+
+Route::delete('/observacao/{id}', [ObservacoesController::class, 'destroy'])->name('observacao.destroy');
+
+Route::get('/observacao/{id}',[ObservacoesController::class,'index'])->name('observacao.index');
+
+Route::get('/observacao/edit/{observacao}',[ObservacoesController::class,'edit'])->name('observacao.edit');
+
+Route::patch('/observacao/update/{observacao}',[ObservacoesController::class,'update'])->name('observacao.update');
+
+
+//Perfil Usuario
+
+Route::get('/usuario',[UsersPerfilController::class,'usuario'])->name('perfil.usuario');
+
+Route::get('/geral',[UsersPerfilController::class,'geral'])->name('perfil.geral');
+
+Route::get('/meuspets',[UsersPerfilController::class,'meuspets'])->name('perfil.meuspets');
+});

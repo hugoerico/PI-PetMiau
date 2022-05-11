@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Vacina extends Model
+class Observacao extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome'];
-    
-    public function pets(){
-        return $this->belongsToMany(Pet::class);
-    }
+    protected $table = 'obsevacoes';
+    protected $fillable = ['texto','pet_id'];
 
     
 }

@@ -7,7 +7,7 @@
     @csrf
     <div class="row">
         <span class="form-label">Nome</span>
-        <input type="text" name="nome" class="form-control">
+        <input type="text" name="nome" class="form-control" >
         </div>
 
     <button type="submit">salvar</button>

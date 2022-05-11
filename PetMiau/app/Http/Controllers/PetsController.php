@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Pet;
 use App\Models\Tipo;
 use App\Models\Vacina;
+use App\Models\Observacoes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\File;
 
 class PetsController extends Controller
 {
@@ -48,13 +51,13 @@ class PetsController extends Controller
 
     }
 
-    public function edit(pet $pet)
+    public function edit(Pet $pet)
     {
         return view('pet.edit')->with(['pet'=>$pet,'tipos'=>Tipo::all(),'vacinas'=>Vacina::all()]);
     }
 
     public function update(Request $request, Pet $pet)
-    { 
+    {  
         if ($request->imagem) {
             $imagem = $request->file('imagem')->store('/public/pets');
             $imagem = str_replace('public/', 'storage/', $imagem);

@@ -4,7 +4,7 @@
 
     <h1>editar pet</h1>
 
-    <form action="{{route('pet.update', $pet->id)}}" method="post">
+    <form action="{{route('pet.update', $pet->id)}}" method="post" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
     <div class="row">
@@ -46,7 +46,7 @@
             <select class="form-select" name="vacinas[]" id="">
                 @foreach($vacinas as $vacina)
 
-                <option value="{{$vacina->id}}" @if($vacina->vacinas->contains ($vacina->id)) selected @endif >{{$vacina->nome}}</option>
+                <option value="{{$vacina->id}}" >{{$vacina->nome}}</option>
 
                 @endforeach
 
